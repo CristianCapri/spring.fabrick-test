@@ -1,0 +1,6 @@
+it\fabrik\spring\conto\controller\RestController.class
+it\fabrik\spring\conto\ServletInitializer.class
+it\fabrik\spring\conto\model\Saldo.class
+it\fabrik\spring\conto\Application.class
+it\fabrik\spring\conto\model\Bonifico.class
+it\fabrik\spring\conto\dao\Dao.class
