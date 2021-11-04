@@ -10,6 +10,7 @@ public class RisGetMovimenti {
     private List<String> error;
     private Payload payload;
 
+
     @Data
     private static class Payload {
         private List<Bonifico> list;
