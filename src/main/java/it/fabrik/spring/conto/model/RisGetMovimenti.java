@@ -1,19 +1,27 @@
 package it.fabrik.spring.conto.model;
 
+import lombok.Data;
+
 import java.util.List;
+
 
 public class RisGetMovimenti {
     private String status;
     private List<String> error;
-    private List<Bonifico> bonifici;
+    private Payload payload;
 
-    public RisGetMovimenti(String status, List<String> error, List<Bonifico> bonifici) {
-        this.status = status;
-        this.error = error;
-        this.bonifici = bonifici;
+    @Data
+    private static class Payload {
+        private List<Bonifico> list;
     }
 
     public RisGetMovimenti() {
+    }
+
+    public RisGetMovimenti(String status, List<String> error,Payload payload) {
+        this.status = status;
+        this.error = error;
+        this.payload = payload;
     }
 
     public String getStatus() {
@@ -32,12 +40,12 @@ public class RisGetMovimenti {
         this.error = error;
     }
 
-    public List<Bonifico> getBonifici() {
-        return bonifici;
+    public Payload getPayload() {
+        return payload;
     }
 
-    public void setBonifici(List<Bonifico> bonifici) {
-        this.bonifici = bonifici;
+    public void setPayload(Payload payload) {
+        this.payload = payload;
     }
 
     @Override
@@ -45,7 +53,7 @@ public class RisGetMovimenti {
         return "RisGetMovimenti{" +
                 "status='" + status + '\'' +
                 ", error=" + error +
-                ", bonifici=" + bonifici +
+                ", bonifici=" + payload +
                 '}';
     }
 }

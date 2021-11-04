@@ -40,10 +40,13 @@ public class ContoController {
     }
 
     @GetMapping("/getMovimenti")
-    public List<Bonifico> getMovimenti(@RequestParam("accountId") String accountId, @RequestParam("fromAccountingDate") String fromAccountingDate, @RequestParam("toAccountingDate") String toAccountingDate) {
-        List<Bonifico> bonifici = new ArrayList<>();
-        String url = "https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
-        url = url.replace("{accountId}", accountId).replace("{fromAccountingDate}", fromAccountingDate).replace("{toAccountingDate}", toAccountingDate);
+    public Object getMovimenti(@RequestParam("accountId") String accountId, @RequestParam("fromAccountingDate") String fromAccountingDate, @RequestParam("toAccountingDate") String toAccountingDate) {
+        List<Object> bonifici = new ArrayList<>();
+        String url ="https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
+                //"https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
+        url = url.replace("{accountId}", accountId);
+        url = url.replace("{fromAccountingDate}", fromAccountingDate);
+        url = url.replace("{toAccountingDate}", toAccountingDate);
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Auth-Schema", "S2S");
@@ -55,9 +58,7 @@ public class ContoController {
 
         ResponseEntity<RisGetMovimenti> response = restTemplate.exchange(url, HttpMethod.GET, entity, RisGetMovimenti.class);
 
-        response.getBody().getBonifici().forEach(b ->bonifici.add(b));
-
-        return response.getBody().getBonifici();
+        return response.getBody().getPayload();
 
     }
 
