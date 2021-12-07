@@ -42,7 +42,8 @@ public class ContoController {
     @GetMapping("/getMovimenti")
     public Object getMovimenti(@RequestParam("accountId") String accountId, @RequestParam("fromAccountingDate") String fromAccountingDate, @RequestParam("toAccountingDate") String toAccountingDate) {
         List<Object> bonifici = new ArrayList<>();
-        String url ="https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
+        // https://sandbox.platfr.ioGET/api/gbs/banking/v4.0/accounts/{accountId}/transactions
+        String url ="https://sandbox.platfr.ioGET/api/gbs/banking/v4.0/accounts/{accountId}/transactions?fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
                 //"https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
         url = url.replace("{accountId}", accountId);
         url = url.replace("{fromAccountingDate}", fromAccountingDate);
