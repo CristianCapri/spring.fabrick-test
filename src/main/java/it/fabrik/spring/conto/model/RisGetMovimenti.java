@@ -10,7 +10,6 @@ public class RisGetMovimenti {
     private List<String> error;
     private Payload payload;
 
-
     @Data
     private static class Payload {
         private List<Bonifico> list;
@@ -53,8 +52,8 @@ public class RisGetMovimenti {
     public String toString() {
         return "RisGetMovimenti{" +
                 "status='" + status + '\'' +
-                ", error=" + error +
-                ", bonifici=" + payload +
+                ", error=" + error + '\'' +
+                ", payload=" + payload +
                 '}';
     }
 }

@@ -36,15 +36,15 @@ public class ContoController {
 
         ResponseEntity<RisGetSaldo> response = restTemplate.exchange(url, HttpMethod.GET, entity, RisGetSaldo.class);
 
-        return response.getBody().getPayload().toString();
+        return response.getBody().getPayload();
     }
 
     @GetMapping("/getMovimenti")
     public Object getMovimenti(@RequestParam("accountId") String accountId, @RequestParam("fromAccountingDate") String fromAccountingDate, @RequestParam("toAccountingDate") String toAccountingDate) {
         List<Object> bonifici = new ArrayList<>();
         // https://sandbox.platfr.ioGET/api/gbs/banking/v4.0/accounts/{accountId}/transactions
-        String url ="https://sandbox.platfr.ioGET/api/gbs/banking/v4.0/accounts/{accountId}/transactions?fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
-                //"https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
+        String url =// https://sandbox.platfr.ioGET/api/gbs/banking/v4.0/accounts/{accountId}/transactions?fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
+                "https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts?accountId={accountId}&fromAccountingDate={fromAccountingDate}&toAccountingDate={toAccountingDate}";
         url = url.replace("{accountId}", accountId);
         url = url.replace("{fromAccountingDate}", fromAccountingDate);
         url = url.replace("{toAccountingDate}", toAccountingDate);

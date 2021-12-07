@@ -1,4 +1,4 @@
-package it.fabrik.spring.conto.model;
+/* package it.fabrik.spring.conto.model;
 
 public class Payload {
 
@@ -59,3 +59,4 @@ public class Payload {
                 '}';
     }
 }
+ */
